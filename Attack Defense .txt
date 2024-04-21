@@ -1,0 +1,83 @@
+Attack Defense :
+Gobuster
+AbuseIPDB
+Cisco Talos Intelligence
+redis-cli
+nmap
+telnet
+openvpn
+Netcat/nc
+
+Cryptography : 
+binwalk
+steghide
+zsteg
+XOR METHOD
+pwn
+LETTER NUMBER CIPHER (A=1 B=2)
+gmpy2
+stegsolve =  wget http://www.caesum.com/handbook/Stegsolve.jar -O stegsolve.jar || chmod +x stegsolve.jar  #IMAGE COMBINER, FILE FORMAT, DATA EXTRACT STEREGOGRAM SOLVER, FRAME BROWSER
+java = sudo apt install default-jre #ATAU VERSI JAVA YANG LAINNYA
+subbreaker =	pip install subbreaker | PAKAI SUDO SAAT INSTALASI | (python) jalaninnya 
+		#subbreaker break --ciphertext <(type study-guide.txt) #Break substitute cipher
+		subbreaker decode --key xunmrydfwhglstibjcavopezqk --ciphertext public/flag.txt
+
+
+CIPHER LIST :
+Caesar
+Vignerre
+Base64
+Rail Fence = https://www.boxentriq.com/code-breaking/rail-fence-cipher
+Letter Number (A=1, B=2)
+ATBASH (A=Z B=Y)
+PlayFair (JUMLAH DIGITNYA HARUS SAMA DENGAN ALPHABETNYA AGAR SEMUANYA MASUK)
+certificate (mirip pgp tapi awalnya = -----BEGIN CERTIFICATE REQUEST-----)
+DES & 3DES (TRIPLE DES) Buat Decode butuh key
+
+
+
+
+
+
+BINARY EXPLOITATION :
+
+pip install pwn
+
+Format String Vulnerabilities =
+saat ada printf(TEXT YANG BISA DIINPUT SEBELUMNYA), dan tanpa adanya quotation mark, kita bisa memasukkan %x agar bisa melihat data dari stack, data yang keluar akan berbentuk hexadecimal dan mungkin Little Endians, (Di Cyberchef saat swap endians ubah dari raw ke hex), lalu mungkin bisa coba dihapus hapus hex diawal karena mungkin mempengaruhi flag yang keluar)
+Little and big Endians, format kita biasanya Big Endians
+
+TCACHE ATTACK =
+Cache yang menyimpan 7 chunk yang dilepas (secara default 7), tcache berisi linked list dimana suatu chunk mempoint ke chunk berikutnya, ada bug untuk memoverwrite pointer yang dituju
+
+
+
+REVERSE ENGINEERING :
+GHIDRA + JDK WINDOWS
+
+
+>>> from pwn import *
+>>> vuln.symbols['win']
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'vuln' is not defined
+>>> vuln = ELF('/vuln')
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/usr/local/lib/python3.10/dist-packages/pwnlib/elf/elf.py", line 219, in __init__
+    self.file = open(path,'rb')
+FileNotFoundError: [Errno 2] No such file or directory: '/vuln'
+>>> vuln = ELF('./vuln')
+[*] '/home/akhtar/LKS/vuln'
+    Arch:     i386-32-little
+    RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX unknown - GNU_STACK missing
+    PIE:      No PIE (0x8048000)
+    Stack:    Executable
+    RWX:      Has RWX segments
+>>> vuln.symbols['win']
+134517238
+>>> p32(vuln.symbols['win'])
+b'\xf6\x91\x04\x08'
+>>>

@@ -1,0 +1,5 @@
+Ghidra
+Burpsuite
+Gitdot
+FoxyProxy
+Cookies Editor
