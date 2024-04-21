@@ -1,0 +1,1 @@
+open exiff tool, check the artist

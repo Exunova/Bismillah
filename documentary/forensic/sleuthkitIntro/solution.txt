@@ -1,0 +1,4 @@
+install sleuthkit
+use mmls to check disk
+connect to the given server
+answer question from the information from the sleuthkit

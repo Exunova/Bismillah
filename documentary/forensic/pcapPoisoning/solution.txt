@@ -1,0 +1,2 @@
+print the string and pipe with grep
+strings trace.pcap | grep -E "pico"

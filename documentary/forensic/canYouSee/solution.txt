@@ -1,0 +1,3 @@
+aperisolve the picture
+DON'T USE THE DAMN STEGHIDE
+use exiff

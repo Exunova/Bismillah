@@ -1,0 +1,4 @@
+reveal clue 1 & 3
+go to alan eliasen futureboy or https://futureboy.us
+go to stegonography
+decode message.wav with password from clue 1: hidden_stegonosaurus 

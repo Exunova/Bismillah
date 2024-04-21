@@ -1,0 +1,5 @@
+Open the file in wireshark and search in tcp.stream eq 5 to get the 5th TCP stream.
+
+Right click any entry, click follow, and then click "TCP Stream."
+
+Find sus looking line and decode with ROT13

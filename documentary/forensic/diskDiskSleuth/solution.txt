@@ -1,0 +1,3 @@
+extract using gunzip
+use srch_strings then pipe it and grep with the flag format
+srch_strings dds1-alpine.flag.img | grep picoCTF

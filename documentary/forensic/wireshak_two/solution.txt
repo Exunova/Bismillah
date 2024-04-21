@@ -1,0 +1,4 @@
+find sus thing
+find dns
+dns.qry.name contains local && ip.dst==18.217.1.57
+decrypt base64

@@ -1,0 +1,9 @@
+open
+find tftp.types
+get all of them
+cat instruction, rot 13
+cat plan, rot 13
+the program is steghide
+use steghide
+the password is there
+the flag is on the 3rd picture

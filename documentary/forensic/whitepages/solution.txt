@@ -1,0 +1,1 @@
+use vscode, replace blank with 1, symbol with 0 then decode the binary, if swapped you can use bitwise operation after binary decoder

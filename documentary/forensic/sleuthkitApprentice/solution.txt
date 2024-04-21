@@ -1,0 +1,6 @@
+extract the file
+check with mmls
+find the bottom directory start number
+use fls and -o flag to check the files
+go to root and my_folder
+use icat to get the flag

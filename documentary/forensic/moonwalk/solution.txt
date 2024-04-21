@@ -1,0 +1,5 @@
+Install MMSSTV on window
+Setting stuff a little
+use RX mode
+play the audio while use the software
+wait till the image fully decoded

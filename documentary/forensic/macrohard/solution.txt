@@ -1,0 +1,6 @@
+extract with binwalk, or change .pptm to .zip
+go to ppt/slideMasters
+Make sure show hidden items is on
+find hidden file
+open hidden file then remove the spaces
+decode with base64
