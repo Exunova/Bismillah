@@ -1,3 +1,5 @@
+nmap -sC -sV {ip}
+
 telnet
 23/tcp  telnet
 tool: telnet 
