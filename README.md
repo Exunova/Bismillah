@@ -15,3 +15,5 @@ Berikut link pengumpulan untuk laporan hari pertama
 Format PDF
 Batas pengumpulan jam 20.00 WIB
 https://forms.gle/ijDikKk5v4UBVbVq9
+
+https://harshkahate.medium.com/guarding-your-virtual-fortress-a-step-by-step-guide-to-install-wazuh-on-a-virtual-machine-part-a0f74f239461
