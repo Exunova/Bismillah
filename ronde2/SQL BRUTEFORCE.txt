@@ -1,0 +1,9 @@
+SQL BRUTEFORCE\
+
+admin:admin
+guest:guest
+user:user
+root:root
+administrator:password
+
+admin'# (JADINYA NGGAK MASUK KE CEK PASSWORD, CEK PASSWORDNYA DI COMMAND)

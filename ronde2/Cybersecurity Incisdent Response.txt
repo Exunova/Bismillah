@@ -1,0 +1,23 @@
+Cybersecurity Incisdent Response, Digital Forensics Investigation
+a. Incident Response Work Task Server, Web Server :
+	Deteksi dan Identifikasi: Identifikasi insiden, nilai tingkat keparahannya, dan tentukan cakupan dampaknya
+		CARA DETEKSI & IDENTIFIKASI : 
+		- Analisis Log untuk melihat apakah ada anomali
+		- Analisis Traffic Jaringan NetFlow, PIFIX, Pola traffic
+		- Memonitor sistem, CPU USAGE, MEMORY USAGE, DISK USAGE, Bisa menggunakan Nagios, Prometheus atau Grafana
+		- Intrusion Detection Systems (IDS), Snort / Suricata mendeteksi potensi ancaman
+		- Security Information and Event Management (SIEM), mengumpulkan memonitor data terkait keamanan dari berbagai sumber
+
+
+	Initial Response: Isolasi server atau sistem yang terkena dampak untuk mencegah kerusakan lebih lanjut, dan beri tahu tim respons insiden.
+	Containment / Pengendalian: Menerapkan tindakan untuk mengatasi insiden tersebut, seperti mematikan server, memutuskan sambungan dari jaringan, atau membatasi akses.
+	Recovery / Pemulihan: Memulihkan server ke kondisi baik, termasuk menginstal ulang perangkat lunak, memulihkan data dari cadangan, dan mengonfigurasi ulang pengaturan sistem.
+	Post-Incident Activities / Kegiatan Pasca-Insiden: Melakukan analisis pasca-insiden untuk mengidentifikasi akar penyebab, mendokumentasikan pembelajaran, dan menerapkan perbaikan 	untuk mencegah insiden serupa di masa depan.
+
+
+
+
+
+b. Incident Response Work Task Server, File Server
+
+c. Vulnerability Detection and Repair, Web Server

