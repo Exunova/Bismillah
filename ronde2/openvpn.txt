@@ -1,0 +1,10 @@
+$ sudo yum update
+install
+$ wget https://gist.githubusercontent.com/luanvuhlu/7f637f2646a8eb4471a0fcf9b200f7c0/raw/22ab116f89e319ea7bb83524ac11bc232acfc83d/openvpn-install.sh -O openvpn-install.sh
+$ sudo chmod +x openvpn-install.sh
+pasang vpn
+$ sudo bash openvpn-install.sh
+cat vpn terus pindahin ke windows
+pake OpenVPN di windows 
+cek vpn status
+$ sudo systemctl status openvpn-server@server.service

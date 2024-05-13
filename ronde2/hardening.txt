@@ -1,0 +1,89 @@
+-preparation
+(instalasi)
+matiin firewall
+setup vm virtual box pake iso nya
+JANGAN LUPA NETWORK DI BRIDGE
+setup network and hostname dulu 
+installation destination pilih virtual hardrive
+software selection pilih server with gui
+terakhir date and time
+sambal install bikin user dan password root
+centang make administrator agar memudahkan
+
+jangan lupa yum update
+
+(install and run server)
+kalo yum ngebug pake ini 
+systemctl stop packageki
+install httpd
+sudo yum install httpd -y
+start server 
+sudo systemctl start httpd
+sudo systemctl enable httpd
+
+untuk connect ke putty cukup masukan ip nya
+jangan lupa install vim
+
+
+- Konfigurasi dan Pengujian Hardening Document Host Information(Linux machines) 
+- Konfigurasi dan Pengujian Hardening Hardisk Encription(Linuxmachines) 
+- Konfigurasi dan Pengujian Hardening Closed Unusual Open Port (Linuxmachines) 
+
+
+
+- Konfigurasi dan Pengujian Hardening Whitelisting Selinux (Linuxmachines) 
+
+check selinux "sestatus"
+check selinux utilities "rpm -q policycoreutils"
+install dan konfigurasi server httpd
+buat app baru
+sudo mkdir -p /vhost/myapp
+sudo vim /vhost/myapp/index.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test</title>
+</head>
+<body>
+    <h1>Test</h1>
+</body>
+</html>
+
+buat apache config 
+sudo vi /etc/httpd/conf.d/myapp.conf
+<VirtualHost *:80>
+    ServerAdmin webmaster@myapp.com
+    DocumentRoot /vhost/myapp
+    ServerName 172.105.83.174  # Replace with your values
+    ErrorLog logs/myapp-error.log
+    CustomLog logs/myapp-access.log common
+
+    <Directory /vhost/myapp>
+        Options FollowSymLinks
+        AllowOverride None
+        Require all granted
+    </Directory>
+</VirtualHost>
+
+tambah read only access
+semanage fcontext -a -t httpd_sys_content_t "/path/to/directory(/.*)?"
+
+
+
+- Konfigurasi dan Pengujian Hardening CHROOT Shell (Linux machines) 
+- Konfigurasi dan Pengujian Hardening Certificate Shell Login(Linuxmachines) 
+- Konfigurasi dan Pengujian Hardening Directory Listing (Linux machines) 
+
+edit vim /etc/httpd/conf/httpd.conf
+di bagian 
+<Directory "/var/www/html">
+
+    Options Indexes FollowSymLinks
+    ...
+hapus Indexes
+save terus restart server
+
+ref: https://www.simplified.guide/apache/disable-directory-listing
+
+
+- Konfigurasi dan Pengujian Hardening Remote Command Exec (Linuxmachines)
