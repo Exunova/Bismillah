@@ -134,7 +134,7 @@ vhost : Uses VHOST for brute-forcing
 -w : Path to the wordlist
 -u : Specify the URL
 
-s3 subdomain
+s3 subdomain (matiin windows defender)
 https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html
 We can interact with this S3 bucket with the aid of the awscli utility. It can be installed on Linux using the
 sudo apt install awscli 
