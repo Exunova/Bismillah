@@ -20,6 +20,10 @@ sudo yum install httpd -y
 start server 
 sudo systemctl start httpd
 sudo systemctl enable httpd
+(unlock firewall buat ke windows)
+sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+sudo firewall-cmd --reload
+
 
 untuk connect ke putty cukup masukan ip nya
 jangan lupa install vim
@@ -29,6 +33,16 @@ jangan lupa install vim
 - Konfigurasi dan Pengujian Hardening Hardisk Encription(Linuxmachines) 
 - Konfigurasi dan Pengujian Hardening Closed Unusual Open Port (Linuxmachines) 
 
+cek port
+firewall-cmd --list-all
+untuk buka port
+sudo firewall-cmd --zone=public --add-port=80/tcp --permanent
+tutup port
+sudo firewall-cmd --zone=public --remove-port=80/tcp --permanent
+jangan lupa RELOAD
+sudo firewall-cmd --reload
+
+https://green.cloud/docs/how-to-configure-iptables-to-open-ports-in-centos-rhel/
 
 
 - Konfigurasi dan Pengujian Hardening Whitelisting Selinux (Linuxmachines) 

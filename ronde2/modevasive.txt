@@ -1,0 +1,15 @@
+https://github.com/hawk-xc/apache-modsec-modevasive
+yum install gcc
+
+instalasi
+yum install httpd-devel -y
+yum groupinstall 'Development tools'
+cd /opt
+wget https://codeload.github.com/shivaas/mod_evasive/zip/master
+unzip master
+cd mod_evasive-master
+apxs -i -c -a mod_evasive24.c
+
+restart server 
+systemctl restart httpd
+systemctl status httpd -l
