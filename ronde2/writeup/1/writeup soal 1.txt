@@ -1,0 +1,5 @@
+instalasai centos 7 di vm
+setelah di instal pastkan di update dengan yum update
+selanjutnya instal httpd
+tes server systemctl start httpd
+untuk memudahkan saya akan menggunakan putty dan akan mengkonfigurasi firewall supaya dapat dibuka di browser windows
