@@ -25,4 +25,5 @@ Buat file php apa saja
 Nyalain security Headernya
 
 HSTS : 
-sudo echo "Header always set Strict-Transport-Security
+
+sudo echo "Header always set Strict-Transport-Security \"max-age=31536000; includeSubDomains\"" >> /etc/httpd/conf/httpd.conf
