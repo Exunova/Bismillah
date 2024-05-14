@@ -3,6 +3,7 @@ Bismillah
 
 
 admin:8efe310f9ab3efeae8d410a8e0166eb2
+P4ssw0rd
 
 Berikut akun dan credential untuk login platform CTF LKS Cyber Security Kota Bandung:
 
