@@ -1,6 +1,9 @@
 # Bismillah
 Bismillah
 
+
+admin:8efe310f9ab3efeae8d410a8e0166eb2
+
 Berikut akun dan credential untuk login platform CTF LKS Cyber Security Kota Bandung:
 
 Username : SMKN 2 BANDUNG
