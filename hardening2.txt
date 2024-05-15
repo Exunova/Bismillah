@@ -1,0 +1,18 @@
+[14/05, 19:33] -: https://paritoshbh.me/blog/allow-access-port-selinux-firewall
+[14/05, 20:59] -: netstat -tapn
+[14/05, 20:59] -: https://paritoshbh.me/blog/allow-access-port-selinux-firewall
+[14/05, 20:59] -: https://www.unixmen.com/chroot-ssh-users-on-centos-7-3
+
+
+chroot example usecase
+[14/05, 20:59] -: public di masukin ke /root/.ssh/authorized_keys
+[14/05, 20:59] -: ssh-keygen -t rsa
+[14/05, 20:59] -: privete di windows
+[14/05, 20:59] -: generate key pake puttygen
+[14/05, 20:59] -: upload key
+[14/05, 20:59] -: tinggal login
+[14/05, 20:59] -: masukin ke /user home directory masing masing
+[14/05, 20:59] -: tergantung usernya
+[14/05, 20:59] -: /home/user/.ssh/authorized_keys
+[14/05, 20:59] -: To make the rule permanent, append the line # echo “net.ipv4.icmp_echo_ignore_all = 1” >> /etc/sysctl.conf to the /etc/sysctl.conf file
+Apply the rule with the command sysctl -p

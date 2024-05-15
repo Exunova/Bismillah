@@ -1,0 +1,149 @@
+https://www.serpworx.com/check-security-headers/?url=Archmadeus.com%2F1
+
+
+<?php
+phpinfo();
+?>
+
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+Header always set X-Frame-Options "SAMEORIGIN"
+
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "same-origin"
+Header always set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' https://cdn.example.com; style-src 'self' https://fonts.example.com; img-src 'self' https://images.example.com"
+
+
+
+It seems like you're preparing for a web application security assessment and want to set up a PHP file with phpinfo() on a web server in VirtualBox/VMware, and then use tools to check the security headers of the web server. You'll also create a vulnerable web application with an info.php file and then enable all security header mitigations without disrupting the application's functionality.
+
+Here's a step-by-step guide to help you achieve this:
+
+Step 1: Set up a PHP file with phpinfo() on a web server in VirtualBox/VMware
+Create a new virtual machine in VirtualBox/VMware and install a Linux distribution (e.g., Ubuntu) on it.
+Install Apache and PHP on the virtual machine. You can use the following commands:
+
+
+sudo apt-get update
+sudo apt-get install apache2 php7.4 libapache2-mod-php7.4
+
+
+Create a new file called info.php in the Apache document root (usually /var/www/html/) with the following content:
+
+<?php
+phpinfo();
+?>
+
+Restart the Apache service to apply the changes:
+
+sudo service apache2 restart
+
+Access the info.php file in your web browser by visiting http://<virtual_machine_IP>/info.php.
+
+
+Step 2: Use tools to check the security headers of the web server
+
+You can use online tools like SecurityHeaders.com or HTTP Headers to scan your web server's security headers.
+Alternatively, you can use command-line tools like curl or wget to inspect the HTTP headers:
+curl -I http://<virtual_machine_IP>/info.php
+OR
+https://www.serpworx.com/check-security-headers/?url=Archmadeus.com%2F1
+
+
+Step 3: Create a vulnerable web application with an info.php file
+
+Create a new PHP file called vulnerable.php in the Apache document root with the following content:
+
+<?php
+echo "<h1>Vulnerable Web Application</h1>";
+echo "<p>Click <a href='info.php'>here</a> to view the PHP info page.</p>";
+?>
+
+Create a new file called info.php in the same directory with the following content:
+
+<?php
+phpinfo();
+?>
+
+This will create a vulnerable web application with an info.php file that can be exploited by attackers.
+
+Step 4: Enable security header mitigations without disrupting the application's functionality
+
+To enable security headers, you'll need to configure Apache to set the appropriate headers. You can do this by creating a new file called security.conf in the Apache configuration directory (usually /etc/apache2/conf.d/) with the following content:
+
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "same-origin"
+Header always set Permissions-Policy "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self';"
+
+Restart the Apache service to apply the changes:
+
+sudo service apache2 restart
+
+Verify that the security headers are being sent by inspecting the HTTP headers using curl or wget:
+curl -I http://<virtual_machine_IP>/vulnerable.php
+
+This should display the security headers set by Apache.
+
+Patching security headers on Apache
+
+To patch the security headers on Apache, you can use the following commands:
+
+sudo a2enmod headers
+sudo service apache2 restart
+
+This will enable the headers module in Apache, which allows you to set custom headers.
+
+Patching individual security headers on Apache
+
+To patch individual security headers on Apache, you can use the following commands:
+
+# Patching Strict-Transport-Security
+sudo echo "Header always set Strict-Transport-Security \"max-age=31536000; includeSubDomains\"" >> /etc/apache2/conf.d/security.conf
+sudo service apache2 restart
+
+# Patching X-Frame-Options
+sudo echo "Header always set X-Frame-Options \"SAMEORIGIN\"" >> /etc/apache2/conf.d/security.conf
+sudo service apache2 restart
+
+# Patching X-Content-Type-Options
+sudo echo "Header always set X-Content-Type-Options \"nosniff\"" >> /etc/apache2/conf.d/security.conf
+sudo service apache2 restart
+
+# Patching Referrer-Policy
+sudo echo "Header always set Referrer-Policy \"same-origin\""
+
+
+
+
+
+
+
+The Apache document root location can vary depending on the Linux distribution and the Apache version you're using. Here are some common locations:
+
+Ubuntu/Debian: /var/www/html/
+CentOS/RHEL: /var/www/html/
+Fedora: /var/www/html/
+OpenSUSE: /srv/www/htdocs/
+Apache 2.4 on Ubuntu/Debian: /var/www/html/ (default) or /var/www/ (if you've configured a virtual host)
+To find the exact document root location on your system, you can try the following methods:
+
+
+Check the Apache configuration file: Open the Apache configuration file using a text editor, usually located at /etc/apache2/apache2.conf (Ubuntu/Debian) or /etc/httpd/conf/httpd.conf (CentOS/RHEL). Look for the DocumentRoot directive, which specifies the document root location.
+sudo cat /etc/apache2/apache2.conf | grep DocumentRoot
+
+
+
+
+
+
+
+
+
+
+
+
+
