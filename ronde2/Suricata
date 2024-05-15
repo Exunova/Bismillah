@@ -1,0 +1,124 @@
+-Preparation
+disable service
+systemctl stop firewalld.service
+systemctl disable firewalld.service
+
+add repository
+sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
+sudo rpm -ivh https://www.elrepo.org/elrepo-release-7.el7.elrepo.noarch.rpm 
+sudo yum update -y
+
+
+install new kernel
+yum --enablerepo=elrepo-kernel install kernel-ml -y
+
+clean /boot
+grub2-mkconfig -o /boot/grub2/grub.cfg
+reboot
+
+-Installing
+insall dependencies
+yum -y install gcc libpcap-devel pcre-devel libyaml-devel file-devel
+yum -y install mariadb-devel GeoIP-devel
+yum -y install zlib-devel jansson-devel nss-devel libcap-ng-devel libnet-devel
+yum -y install libnetfilter_queue-devel ethtool
+sudo yum install -y epel-release
+sudo yum install -y gcc gcc-c++ make automake libpcap-devel pcre-devel libyaml-devel file-devel zlib-devel jansson-devel nss-devel libcap-ng-devel libnet-devel tar wget GeoIP-devel
+sudo yum install epel-release -y
+sudo yum install libmaxminddb-devel -y
+sudo yum install lz4-devel -y
+sudo yum install rust cargo -y
+
+download suricata
+wget https://www.openinfosecfoundation.org/download/suricata-6.0.10.tar.gz
+tar -xzvf suricata-6.0.10.tar.gz
+cd suricata-6.0.10
+
+configure
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-geoip
+
+install suricata
+make
+sudo make install-full
+ldconfig
+
+configure main file
+vim /etc/suricata/suricata.yaml
+[...]
+ - drop:
+ enabled: yes
+[...]
+ - dns:
+ enabled: yes
+[...]
+#line 784
+ outputs:
+ - console:
+ enabled: yes
+ - file:
+ enabled: yes
+filename: /var/log/suricata/suricata.log
+[...]
+classification-file: /etc/suricata/rules/classification.config
+reference-config-file: /etc/suricata/rules/reference.config
+[...]
+ HOME_NET: "[192.168.1.0/24]" (your ip)
+[...]
+host-os-policy:
+ # Make the default policy windows.
+ windows: [0.0.0.0/0]
+ bsd: []
+ bsd-right: []
+ old-linux: []
+ linux: [192.168.1.0/24, 192.168.1.252] (your ip)
+ old-solaris: []
+ solaris: ["::1"]
+ hpux10: []
+ hpux11: []
+ irix: []
+ macos: []
+ vista: []
+ windows2k3: []
+[...]
+af-packet:
+    - interface : enp0s3 (adjust with yours)
+
+suricata-update
+
+adjustment 
+modprobe ip_conntrack
+modprobe ip_conntrack_ftp
+modprobe ip_nat_ftp
+echo 1000000 > /sys/module/nf_conntrack/parameters/hashsize
+echo 1 > /proc/sys/net/ipv4/tcp_syncookies
+echo 1 > /proc/sys/net/ipv4/tcp_timestamps
+echo 1 > /proc/sys/net/ipv4/ip_forward
+echo 0 > /proc/sys/net/netfilter/nf_conntrack_tcp_loose
+echo 2000000 > /proc/sys/net/netfilter/nf_conntrack_max
+PSNI=/proc/sys/net/ipv4
+for END in $PSNI/conf/*/rp_filter ; do echo 1 > $END ; done
+echo 0 > /proc/sys/net/ipv4/icmp_echo_ignore_all
+echo 1 > /proc/sys/net/ipv4/icmp_echo_ignore_broadcasts
+PSNI=/proc/sys/net/ipv6
+for END in $PSNI/conf/*/disable_ipv6 ; do echo 1 > $END ; done
+echo 0 > /proc/sys/net/netfilter/nf_conntrack_helper
+ethtool -K enp0s3 tx off
+ethtool -K enp0s3 tso off
+ethtool -K enp0s3 gro off
+ethtool -K enp0s3 rxvlan off
+ethtool -K enp0s3 txvlan off
+
+start
+suricata -c /etc/suricata/suricata.yaml -i enp0s3 -D
+
+redirect connect apache 
+iptables -t nat -A PREROUTING -d 192.168.1.252 -p tcp --dport 80 -j DNAT --to 192.168.1.250
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -j MASQUERADE
+(adjust with your ip)
+
+make default gw
+ip addr show
+route -n
+route del default
+route add default gw 172.168.0.1 (change ip with your own gw)
+

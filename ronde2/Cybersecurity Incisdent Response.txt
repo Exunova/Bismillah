@@ -20,4 +20,88 @@ a. Incident Response Work Task Server, Web Server :
 
 b. Incident Response Work Task Server, File Server
 
+Detection and Identification:
+
+Analyze File Server logs for anomalies, such as unusual file access patterns or unauthorized changes to file permissions.
+Monitor network traffic to and from the File Server using tools like NetFlow, PIFIX, or traffic analysis software.
+Use system monitoring tools like Nagios, Prometheus, or Grafana to track CPU usage, memory usage, disk usage, and other system metrics.
+Implement Intrusion Detection Systems (IDS) like Snort or Suricata to detect potential threats.
+Utilize Security Information and Event Management (SIEM) systems to collect and monitor security-related data from various sources.
+
+Initial Response:
+
+Isolate the affected File Server or system to prevent further damage and notify the incident response team.
+Contain the incident by restricting access to the File Server or shutting it down temporarily.
+
+Containment/Pengendalian:
+
+Implement measures to mitigate the incident, such as:
+Restricting access to sensitive files or folders.
+Disabling file sharing or network access.
+Implementing temporary access controls or authentication mechanisms.
+Perform a thorough analysis of the incident to determine the scope and impact.
+
+Recovery/Pemulihan:
+
+Restore the File Server to a known good state, including:
+Reinstalling software and firmware.
+Restoring data from backups.
+Reconfiguring system settings and access controls.
+Verify the integrity of files and data to ensure they have not been compromised.
+
+Post-Incident Activities/Kegiatan Pasca-Insiden:
+
+Conduct a post-incident analysis to identify the root cause of the incident.
+Document lessons learned and implement improvements to prevent similar incidents in the future.
+Update incident response procedures and training to reflect the lessons learned.
+
+File Server:
+
+In the context of incident response, a File Server is a critical asset that requires special attention. Here are some key considerations:
+
+File System Analysis: Analyze the file system for signs of unauthorized access, data exfiltration, or malicious activity.
+File Integrity Monitoring: Implement file integrity monitoring tools to detect changes to files or folders.
+Access Control: Review and update access controls, including permissions, ACLs, and file sharing settings.
+Data Backup and Recovery: Ensure that regular backups are performed, and data can be restored in case of a disaster or incident.
+
+
+
+Key differences:
+
+Purpose: A File Server is designed for file storage and sharing, while a Web Server is designed for hosting and serving web content.
+Protocols: File Servers use file sharing protocols (e.g., SMB, NFS), while Web Servers use web protocols (e.g., HTTP, HTTPS).
+Access: File Servers provide access to files and folders, while Web Servers provide access to web content and applications.
+Security: File Servers typically require stronger access controls and authentication mechanisms, as they store sensitive files and data. Web Servers, on the other hand, require security measures to protect against web-based attacks, such as SQL injection and cross-site scripting (XSS).
+
+
+
 c. Vulnerability Detection and Repair, Web Server
+
+Vulnerability Detection:
+
+Vulnerability detection is the process of identifying potential weaknesses or vulnerabilities in a web server's configuration, software, or hardware. The goal is to detect vulnerabilities before malicious actors can exploit them.
+
+Here are some common methods for vulnerability detection in web servers:
+
+Network Scanning: Network scanning tools, such as Nmap, Nessus, or OpenVAS, are used to identify open ports, services, and potential vulnerabilities in the web server's network configuration.
+Web Application Scanning: Web application scanning tools, such as Burp Suite, ZAP, or Acunetix, are used to identify vulnerabilities in web applications, such as SQL injection, cross-site scripting (XSS), and cross-site request forgery (CSRF).
+Configuration Scanning: Configuration scanning tools, such as Nessus or OpenVAS, are used to identify misconfigurations or weaknesses in the web server's configuration files, such as Apache or IIS.
+Log Analysis: Log analysis tools, such as Splunk or ELK, are used to analyze web server logs to identify potential security incidents or vulnerabilities.
+Penetration Testing: Penetration testing, also known as pen testing or ethical hacking, involves simulating a cyber attack on the web server to identify vulnerabilities and weaknesses.
+
+
+Vulnerability Repair:
+
+Once vulnerabilities are detected, it's essential to repair or remediate them to prevent exploitation. Here are some common methods for vulnerability repair in web servers:
+
+Patch Management: Apply security patches and updates to the web server's operating system, software, and applications to fix known vulnerabilities.
+Configuration Hardening: Harden the web server's configuration by disabling unnecessary services, closing open ports, and restricting access to sensitive areas.  
+Vulnerability Mitigation: Implement mitigation measures, such as input validation and sanitization, to prevent exploitation of identified vulnerabilities.
+Web Application Firewall (WAF) Configuration: Configure a WAF, such as ModSecurity or OWASP, to detect and prevent web-based attacks.
+Incident Response: Develop an incident response plan to quickly respond to security incidents and minimize the impact of a breach.
+
+
+
+
+
+

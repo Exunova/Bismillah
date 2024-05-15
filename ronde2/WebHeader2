@@ -1,0 +1,53 @@
+sudo yum install httpd php
+
+buat file info.php :
+<?php phpinfo();?>
+
+setelah itu taruh di apache document root
+/var/www/html
+
+sudo mkdir var/www/html (coba di cd dlu kalo gk ada baru buat)
+
+sudo echo <?php phpinfo();?> > /var/www/html/info.php
+
+restart server apachenya
+
+sudo systemctl restart httpd
+
+Cek menggunakan tools, bisa pakai curl atau online (ada di Webheader.txt)
+
+curl -I http://localhost(ip)/info.php
+
+Buat file php apa saja
+
+<?php echo "Halo SMKN2 BANDUNG" ?>
+
+Nyalain security Headernya
+
+HSTS : 
+
+sudo echo "Header always set Strict-Transport-Security \"max-age=31536000; includeSubDomains\"" >> /etc/httpd/conf/httpd.conf
+
+X-Frame-Options
+
+sudo echo "Header always set X-Frame-Options \"SAMEORIGIN\"" >> /etc/httpd/conf/httpd.conf
+
+X-Content-Type-Options
+
+sudo echo "Header always set X-Content-Type-Options \"nosniff\"" >> /etc/httpd/conf/httpd.conf
+
+Referrer-Policy
+
+sudo echo "Header always set Referrer-Policy \"same-origin\"" >> /etc/httpd/conf/httpd.conf
+
+Permission-Policy
+
+sudo echo "Header always set Permissions-Policy \"accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()\"" >> /etc/httpd/conf/httpd.conf
+
+Content-Security-Policy (CSP) 
+
+sudo echo "Header always set Content-Security-Policy \"default-src 'self'; script-src 'self' https://cdn.example.com; style-src 'self' https://fonts.googleapis.com; img-src 'self' https://example.com\"" >> /etc/httpd/conf/httpd.conf
+
+Restart Apache
+
+sudo systemctl restart httpd
